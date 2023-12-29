@@ -1,0 +1,118 @@
+/* Registration Form CSS */
+.divider-text {
+  position: relative;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.divider-text span {
+  padding: 7px;
+  font-size: 12px;
+  position: relative;   
+  z-index: 2;
+}
+.divider-text:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  top: 55%;
+  left: 0;
+  z-index: 1;
+}
+
+
+/* END Registration Form CSS */
+
+
+button[type="submit"] {
+  background-color: #BE3144 !important;
+  color: white !important;
+}
+
+button[type="submit"]:hover {
+  background-color: #872341 !important;
+
+}
+
+
+.navbar-custom {
+  background-color: #BE3144 !important;
+}
+
+.navbar-custom a {
+  color: white !important;
+}
+
+#map {
+    height: 500px;
+  }
+
+/* your custom CSS \*/
+@-moz-keyframes pulsate {
+  from {
+    -moz-transform: scale(0.25);
+    opacity: 1.0;
+  }
+
+  95% {
+    -moz-transform: scale(1.3);
+    opacity: 0;
+  }
+
+  to {
+    -moz-transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes pulsate {
+  from {
+    -webkit-transform: scale(0.25);
+    opacity: 1.0;
+  }
+
+  95% {
+    -webkit-transform: scale(1.3);
+    opacity: 0;
+  }
+
+  to {
+    -webkit-transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* get the container that's just outside the marker image, 
+		which just happens to have our Marker title in it */
+div[aria-label="Emergency Location"] {
+  -moz-animation: pulsate 1.5s ease-in-out infinite;
+  -webkit-animation: pulsate 1.5s ease-in-out infinite;
+  border: 1pt solid #fff;
+  /* make a circle */
+  -moz-border-radius: 51px;
+  -webkit-border-radius: 51px;
+  border-radius: 51px;
+  /* multiply the shadows, inside and outside the circle */
+  -moz-box-shadow: inset 0 0 5px rgb(255, 0, 0), inset 0 0 5px rgb(255, 0, 0), inset 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
+  -webkit-box-shadow: inset 0 0 5px rgb(255, 0, 0), inset 0 0 5px rgb(255, 0, 0), inset 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
+  box-shadow: inset 0 0 5px rgb(255, 0, 0), inset 0 0 5px rgb(255, 0, 0), inset 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0), 0 0 5px rgb(255, 0, 0);
+  /* set the ring's new dimension and re-center it */
+  height: 51px !important;
+  margin: -18px 0 0 -18px;
+  width: 51px !important;
+}
+
+/* hide the superfluous marker image since it would expand and shrink with its containing element */
+/*	#map_canvas div[style*="987654"][title] img {*/
+#map_canvas div[title="I might be here"] img {
+  display: none;
+}
+
+/* compensate for iPhone and Android devices with high DPI, add iPad media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (device-width: 768px) {
+  #map_canvas div.gmnoprint[title="I might be here"] {
+    margin: -10px 0 0 -10px;
+  }
+}

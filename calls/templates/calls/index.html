@@ -1,0 +1,80 @@
+{% extends 'calls/base.html' %}
+{% load static %}
+{% block content %}
+<div class="p-2">
+    <div class="mt-4">
+        <div class="row">
+            <div class="col-4">
+                <div class="card shadow mt-5">
+                    <div class="card-body" id="callerInformation">
+                      <h5 class="card-title">Caller Personal Information</h5>
+                      <hr />
+                      <p class="card-text mb-1">
+                        <span class="fw-bold">Phone Number:</span> <span class="text-primary phoneNumber"></span>
+                      </p>
+                      <p class="card-text mb-1">
+                        <span class="fw-bold">Caller name:</span> <span class="callerName"></span> 
+                      </p>
+                      <p class="card-text mb-1">
+                        <span class="fw-bold">Caller Registered Address:</span> <span class="callerAddress"></span>
+                      </p>
+                      <hr />
+                      <h5>Call Information</h5>
+                      <hr />
+                      <p class="card-text mb-1">
+                        <span class="fw-bold">Call Time:</span> <span class="callTime"></span>
+                      </p>
+                      <p class="card-text mb-1">
+                        <span class="fw-bold">Distance:</span> <span class="distance"></span>
+                      </p>
+                      <p class="card-text m-0">
+                        <span class="fw-bold">Call Location:</span> <span class="callLocation"></span>
+                      </p>
+                      <p class="card-text m-0">
+                        <span class="fw-bold">Call Coordinates:</span> <span class="callCoordinates"></span>
+                      </p>
+                      <p class="card-text m-0">
+                        <span class="fw-bold">Estimated Travel Time:</span> <span class="ett"></span>
+                      </p>
+                      <p class="card-text m-0">
+                        <span class="fw-bold">Estimated Travel Time in Traffic:</span> <span class="ettt"></span>
+                      </p>
+                      <div class="mt-2">
+                        <div>
+                            <button type="button" data-status="Responded"  data-bs-target="#statusModal" class="statusBtn btn btn-sm btn-success">Respond</button>
+                            <button type="button" id="track" class="track btn btn-sm btn-primary">Track</button>
+                            <button type="button" data-status="Canceled"  data-bs-target="#statusModal"  class="statusBtn btn btn-sm btn-danger">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-8">
+        <h3>Real-Time Emergency Calls</h3>
+                <div id="map"></div>
+            </div>
+        </div>
+        <script>
+            (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+                ({ key: "AIzaSyBw092-D_-ko1ufD8EdITfvJPdnm5anTuE", v: "beta" });
+        </script>
+    </div>
+</div>
+<div class="modal fade" id="statusModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="confirmStatusBtn" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="{% static 'js/index.js' %}"></script>
+</div>
+{% endblock %}

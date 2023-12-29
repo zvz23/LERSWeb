@@ -1,0 +1,83 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="container pt-3">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Create Account</h4>
+            <p class="text-center">Register to LERS so we will know who is calling</p>
+            <form method="post" action="{% url 'users:signup' %}">
+                {% csrf_token %}
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="full_name" class="form-control" placeholder="Full name" type="text" value="{{ form.data.full_name }}">
+                    
+                </div>
+                {% for error in form.full_name.errors %}
+                        <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="username" class="form-control" placeholder="Username" type="text" value="{{ form.data.username }}">
+                </div>
+                {% for error in form.username.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="email" class="form-control" placeholder="Email address" type="email" value="{{ form.data.email }}">
+                </div>
+                {% for error in form.email.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <input name="phone_number" class="form-control" placeholder="Phone number" type="text" value="{{ form.data.phone_number }}">
+                </div>
+                {% for error in form.phone_number.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-map-marker-alt"></i> </span>
+                    </div>
+                    <input name="address" class="form-control" placeholder="Address" type="text" value="{{ form.data.address }}">
+                </div>
+                {% for error in form.address.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="password1" class="form-control" placeholder="Create password" type="password">
+                </div>
+                {% for error in form.password1.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="password2" class="form-control" placeholder="Repeat password" type="password">
+                </div>
+                {% for error in form.password2.errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block w-100"> Create Account </button>
+                </div>
+            </form>
+        </article>
+    </div> 
+</div>
+
+{% endblock %}
